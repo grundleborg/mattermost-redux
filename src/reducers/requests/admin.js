@@ -216,6 +216,26 @@ function removeIdpSamlCertificate(state = initialRequestState(), action) {
     );
 }
 
+function uploadLicense(state = initialRequestState(), action) {
+    return handleRequest(
+        AdminTypes.UPLOAD_LICENSE_REQUEST,
+        AdminTypes.UPLOAD_LICENSE_SUCCESS,
+        AdminTypes.UPLOAD_LICENSE_FAILURE,
+        state,
+        action
+    );
+}
+
+function removeLicense(state = initialRequestState(), action) {
+    return handleRequest(
+        AdminTypes.REMOVE_LICENSE_REQUEST,
+        AdminTypes.REMOVE_LICENSE_SUCCESS,
+        AdminTypes.REMOVE_LICENSE_FAILURE,
+        state,
+        action
+    );
+}
+
 export default combineReducers({
     getLogs,
     getAudits,
@@ -237,6 +257,8 @@ export default combineReducers({
     uploadIdpSamlCertificate,
     removePublicSamlCertificate,
     removePrivateSamlCertificate,
-    removeIdpSamlCertificate
+    removeIdpSamlCertificate,
+    uploadLicense,
+    removeLicense
 });
 
