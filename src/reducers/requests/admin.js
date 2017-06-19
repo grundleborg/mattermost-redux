@@ -236,6 +236,16 @@ function removeLicense(state = initialRequestState(), action) {
     );
 }
 
+function getAnalytics(state = initialRequestState(), action) {
+    return handleRequest(
+        AdminTypes.GET_ANALYTICS_REQUEST,
+        AdminTypes.GET_ANALYTICS_SUCCESS,
+        AdminTypes.GET_ANALYTICS_FAILURE,
+        state,
+        action
+    );
+}
+
 export default combineReducers({
     getLogs,
     getAudits,
@@ -259,6 +269,7 @@ export default combineReducers({
     removePrivateSamlCertificate,
     removeIdpSamlCertificate,
     uploadLicense,
-    removeLicense
+    removeLicense,
+    getAnalytics
 });
 
