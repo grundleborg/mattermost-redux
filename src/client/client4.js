@@ -27,6 +27,7 @@ export default class Client4 {
         this.url = '';
         this.urlVersion = '/api/v4';
         this.userAgent = null;
+        this.defaultHeaders = {};
 
         this.translations = {
             connectionError: 'There appears to be a problem with your internet connection.',
@@ -52,6 +53,10 @@ export default class Client4 {
 
     setToken(token) {
         this.token = token;
+    }
+
+    setAcceptLanguage(locale) {
+        this.defaultHeaders['Accept-Language'] = locale;
     }
 
     getServerVersion() {
@@ -154,6 +159,10 @@ export default class Client4 {
         return `${this.getBaseRoute()}/hooks/outgoing/${hookId}`;
     }
 
+    getOAuthRoute() {
+        return `${this.url}/oauth`;
+    }
+
     getOAuthAppsRoute() {
         return `${this.getBaseRoute()}/oauth/apps`;
     }
@@ -182,7 +191,8 @@ export default class Client4 {
         const newOptions = Object.assign({}, options);
 
         const headers = {
-            [HEADER_REQUESTED_WITH]: 'XMLHttpRequest'
+            [HEADER_REQUESTED_WITH]: 'XMLHttpRequest',
+            ...this.defaultHeaders
         };
 
         if (this.token) {
