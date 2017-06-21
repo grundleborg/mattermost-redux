@@ -1041,6 +1041,7 @@ export default class Client4 {
     };
 
     // Files Routes
+
     getFileUrl(fileId, timestamp) {
         let url = `${this.getFileRoute(fileId)}`;
         if (timestamp) {
@@ -1085,6 +1086,13 @@ export default class Client4 {
             request
         );
     };
+
+    getFilePublicLink = async (fileId) => {
+        return this.doFetch(
+            `${this.getFileRoute(fileId)}/link`,
+            {method: 'get'}
+        );
+    }
 
     // Preference Routes
 
